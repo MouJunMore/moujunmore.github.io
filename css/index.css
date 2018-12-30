@@ -1,0 +1,30 @@
+h2 {
+    color: black;
+    padding: 20px 0;
+}
+/* body {
+   
+    background: url('https://i0.hdslb.com/bfs/album/9d27b5a51491d931f5aaa81b8cad4b5b9d96b333.png') no-repeat center 0px;
+} */
+.bg-container {
+    text-align: center;
+    overflow: hidden;
+}
+
+.bg-img {
+    width: auto;  
+    height: auto;  
+}
+
+.my-container {
+    display: block;
+    margin: 100px 50%;
+    transform: translate(-150px,50%);
+    
+  
+}
+
+.my-container button {
+    width: 240px;
+}
+

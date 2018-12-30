@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>分析客户</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>客户分析</title>
     <link rel="stylesheet" href="layui/css/layui.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <div class="bg-container" style="position:absolute;z-index:-1;width:100%;height:100%;">
-        <img class="bg-img" src="https://i0.hdslb.com/bfs/album/9d27b5a51491d931f5aaa81b8cad4b5b9d96b333.png"  />
+        <img class="bg-img" src="https://i0.hdslb.com/bfs/album/9d27b5a51491d931f5aaa81b8cad4b5b9d96b333.png" />
     </div>
     <div class="header" style="background-color: rgb(255, 255, 255);border-bottom-color: rgb(255, 255, 255);box-shadow: 0 3px 4px rgba(0, 0, 0, .15);">
         <div class="layui-main">
@@ -22,17 +23,24 @@
     <div class="layui-container">
         <div class="my-container">
             <button type="button " class="layui-btn layui-btn-normal    " id="upfile">
-                <i class="layui-icon">&#xe67c;</i>上传CSV格式文件
+                <i class="layui-icon">&#xe67c;</i> 上传CSV格式文件
             </button>
-            <input type="file" id="fileBtn" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;">
+            <input type="file" id="fileBtn" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;" accept=".csv">
 
             <div>
-                <button type="button" onclick="javascript:upFile();" class="layui-btn layui-btn-warm" id="parsefile">
-                    <i class="layui-icon">&#xe609;</i>解析 / 下载 文件
+                <button type="button" onclick="javascript:upFile();" class="layui-btn layui-btn-warm">
+                    <i class="layui-icon" style="font-size:18px;margin-right: 10px">&#xe609;</i> 解析文件重组
+                </button>
+            </div>
+
+            <div>
+                <button type="button" class="layui-btn layui-btn-warm" onclick="javascript:loadBtn()" style="background-color:#6cd800 ; margin-top: 20px">
+                    <i class="layui-icon" style="font-size:22px;margin-right: 10px">&#xe601;</i> 打包下载文件
                 </button>
             </div>
         </div>
     </div>
+
     <script src="layui/layui.js"></script>
     <script src="js/parse.js"></script>
 </body>
