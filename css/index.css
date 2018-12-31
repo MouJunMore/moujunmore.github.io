@@ -16,10 +16,22 @@ body {
 }
 
 .bg-img {
-    width: auto;  
+    width: 100%;  
     height: auto;  
 }
 
 button {
     width: 200px;
+}
+
+.my-content {
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
