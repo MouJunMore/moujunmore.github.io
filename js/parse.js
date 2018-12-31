@@ -76,7 +76,7 @@ var upFile = function () {
             }
 
         } else {
-            alert("您使用的浏览器不支持，建议使用Chrome最新版或Firefox浏览器最新版");
+            layer.msg('您使用的浏览器不支持，建议使用Chrome最新版或Firefox浏览器最新版', { icon: 0 });
         }
     });
 }
