@@ -8,6 +8,8 @@ document.getElementById('upfile').onclick = function () {
 String.prototype.trim = function () {
     return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 }
+
+//判断value 是否在数组里
 var inArray = function (value, arr) {
     if (typeof (arr) == undefined) return -1;
     if (typeof (value) == undefined) return -1;
@@ -16,27 +18,31 @@ var inArray = function (value, arr) {
     }
     return -1;
 }
-var upFile = function () {
-    layui.use(['layer', 'form'], function () {
 
+// 点击解析按钮，开始读取文件
+var upFile = function () {
+    //js 入口程序  模块化加载js
+    layui.use(['layer', 'form'], function () {
+        //读取input上传的文件
         files = document.getElementById("fileBtn").files;
+        // 判断有没有选择文件
         if (files.length <= 0) {
             layer.msg('请先选择文件', { icon: 0 });
             return;
         }
 
-        if (typeof (FileReader) !== 'undefined') {    //H5
-            var load = layer.load(0); //风格1的加载
+        // 
+        if (typeof (FileReader) !== 'undefined') {
+            var load = layer.load(0);
             var reader = new FileReader();
-            reader.readAsText(files[0]);            //以文本格式读取
+            reader.readAsText(files[0]);
             reader.onload = function (evt) {
-                var data = evt.target.result;        //读到的数据
+                var data = evt.target.result;
                 //拿到数据后  分行
                 var rows = data.split("\n");
                 //console.log(rows);
                 // 创建临时数组，保存数据
                 var temp = new Array();
-
                 for (var i = 1; i < rows.length; i++) {
                     if (rows[i] == '' || typeof (rows[i]) == 'undefined') continue;
                     //分列
@@ -63,11 +69,8 @@ var upFile = function () {
                     }
                 }
                 for (var tempItem in temp) {
-                    // console.log(tempItem);
                     arrData[arrData.length] = temp[tempItem].join(",").replace(/[\r\n]/g, "");
-                    //console.log(temp[tempItem].join(",").replace(/[\r\n]/g,""));
                 }
-                //console.log(arrData.join("\n"));
                 layer.close(load);
                 layer.msg('解析完成！', { icon: 1 });
             }
@@ -75,13 +78,10 @@ var upFile = function () {
         } else {
             alert("您使用的浏览器不支持，建议使用Chrome最新版或Firefox浏览器最新版");
         }
-
-
     });
-
-
 }
 
+// 下载文件
 var loadBtn = function () {
     layui.use(['layer', 'form'], function () {
         if (typeof (files) == 'undefined' || files == '' || files.length <= 0) {
@@ -94,16 +94,9 @@ var loadBtn = function () {
         console.log(str);
 
         var blob = new Blob(["\ufeff" + str], { type: 'text/csv' }); //解决大文件下载失败
-        //var encodedUri = encodeURIComponent(blob);
-        // var uri = 'data:text/csv;charset=utf-8,' + str;
         var downloadLink = document.createElement("a");
-        //var csvContent = "data:text/csv;charset=GBK,\uFEFF" + str;
-        // var encodedUri = encodeURI(csvContent);
         downloadLink.setAttribute("href", URL.createObjectURL(blob));
-        //downloadLink.setAttribute("href", encodedUri);
         downloadLink.setAttribute("download", "my_data.csv");
-        //downloadLink.href = uri;
-        //downloadLink.download = "买家购买信息表.csv";
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
