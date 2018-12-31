@@ -96,7 +96,7 @@ var loadBtn = function () {
         var blob = new Blob(["\ufeff" + str], { type: 'text/csv' }); //解决大文件下载失败
         var downloadLink = document.createElement("a");
         downloadLink.setAttribute("href", URL.createObjectURL(blob));
-        downloadLink.setAttribute("download", "my_data.csv");
+        downloadLink.setAttribute("download", "客户信息表.csv");
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
